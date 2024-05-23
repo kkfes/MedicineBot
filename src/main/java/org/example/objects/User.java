@@ -6,12 +6,14 @@ public class User {
     private long user_id;
     private String text;
     private long time;
+    private long doctor_id;
 
-    public User(String id, long user_id, String text, long time) {
+    public User(String id, long user_id, String text, long time, long doctor_id) {
         this.id = id;
         this.user_id = user_id;
         this.text = text;
         this.time = time;
+        this.doctor_id = doctor_id;
     }
 
     public String getId() {
@@ -44,5 +46,13 @@ public class User {
 
     public void setTime(long time) {
         this.time = time;
+    }
+
+    public long getDoctor_id() {
+        return doctor_id;
+    }
+
+    public void setDoctor_id(long doctor_id) {
+        this.doctor_id = doctor_id;
     }
 }

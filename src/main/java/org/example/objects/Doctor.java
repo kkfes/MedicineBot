@@ -1,5 +1,7 @@
 package org.example.objects;
 
+import java.util.ArrayList;
+
 //Объект доктора
 public class Doctor {
     private long id;
@@ -8,6 +10,54 @@ public class Doctor {
     private String name;
     private int cost;
     private String[] selectedTimes = new String[]{};
+    private ArrayList<Rating> ratings = new ArrayList<>();
+
+    public static class Rating{
+        int rating;
+        int comment;
+        String owner;
+
+        public Rating(int rating, String owner) {
+            this.rating = rating;
+            this.comment = comment;
+            this.owner = owner;
+        }
+
+        public int getRating() {
+            return rating;
+        }
+
+        public void setRating(int rating) {
+            this.rating = rating;
+        }
+
+        public int getComment() {
+            return comment;
+        }
+
+        public void setComment(int comment) {
+            this.comment = comment;
+        }
+
+        public String getOwner() {
+            return owner;
+        }
+
+        public void setOwner(String owner) {
+            this.owner = owner;
+        }
+    }
+
+    public int getRating(){
+        if(ratings.isEmpty()){
+            return 5;
+        }
+        int all = 0;
+        for (Rating r:ratings){
+            all+=r.rating;
+        }
+        return all/ratings.size();
+    }
 
     public Doctor(long id, long hospital_id, long specialist_type, String name, int cost) {
         this.id = id;
@@ -63,5 +113,13 @@ public class Doctor {
 
     public void setSelectedTimes(String[] selectedTimes) {
         this.selectedTimes = selectedTimes;
+    }
+
+    public ArrayList<Rating> getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(ArrayList<Rating> ratings) {
+        this.ratings = ratings;
     }
 }
